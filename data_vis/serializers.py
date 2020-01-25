@@ -1,11 +1,24 @@
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from .models import Room
+from .models import Room, DataType, TimePeriod
 from django.contrib.auth.models import User
 
+
 class RoomSerializer(serializers.ModelSerializer):
-    model = Room
-    fields = ('id', 'name', 'period')
+    class Meta:
+        model = Room
+        fields = ('id', 'name')
+
+class TimePeriodSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TimePeriod
+        fields = ('id', 'room', 'time','data')
+
+
+class DateTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DataType
+        fields = ('id', 'room', 'type')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -18,4 +31,3 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         Token.objects.create(user=user)
         return user
-
