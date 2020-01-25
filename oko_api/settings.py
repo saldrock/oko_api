@@ -26,7 +26,7 @@ SECRET_KEY = 'k@railz__rr_%u6rht8xi5ohpxagz_d7h@w*1(=^4vw9vz+*69'
 DEBUG = True
 
 ALLOWED_HOSTS = ['253fa2e0.ngrok.io',
-
+                 '5feb61e0.ngrok.io',
                  ]
 
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'data_vis',
 ]
 
@@ -84,6 +85,11 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': {
+        'rest_framework.permissions.IsAuthenticated',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
