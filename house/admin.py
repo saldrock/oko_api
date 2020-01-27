@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Room, House, Control, Suggestion
 
-# Register your models here.
+admin.site.register(Room)
+admin.site.register(House)
+admin.site.register(Control)
+admin.site.register(Suggestion)
