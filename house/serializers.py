@@ -1,13 +1,22 @@
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from .models import Room, House, Control, Suggestion
+from .models import Room, House, Control, Suggestion, Devices
 from django.contrib.auth.models import User
 
 
+class DeviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Devices
+        fields = ('id', 'name')
+
+
 class RoomSerializer(serializers.ModelSerializer):
+    devices = DeviceSerializer(many=True)
     class Meta:
         model = Room
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'device')
+
+
 
 
 class HouseSerializer(serializers.ModelSerializer):
