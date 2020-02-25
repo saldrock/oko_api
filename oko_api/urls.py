@@ -8,5 +8,5 @@ urlpatterns = [
     path('data_vis/', include('data_vis.urls')),
     path('auth/', obtain_auth_token),
     path('house/', include('house.urls')),
-    #testing
+    #please dont break
 ]
