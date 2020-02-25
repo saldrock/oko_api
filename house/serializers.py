@@ -14,15 +14,14 @@ class RoomSerializer(serializers.ModelSerializer):
     devices = DeviceSerializer(many=True)
     class Meta:
         model = Room
-        fields = ('id', 'name', 'device')
-
-
+        fields = ('id', 'name', 'devices')
 
 
 class HouseSerializer(serializers.ModelSerializer):
+    rooms = DeviceSerializer(many=True)
     class Meta:
         model = House
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'rooms')
 
 
 class ControlSerializer(serializers.ModelSerializer):

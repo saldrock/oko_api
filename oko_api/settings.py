@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['253fa2e0.ngrok.io',
                  '5feb61e0.ngrok.io',
                  '127.0.0.1',
-                 '8208beaf.ngrok.io',
+                 '9255b796.ngrok.io',
                  ]
 
 
@@ -45,11 +45,13 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'data_vis',
     'house',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -58,6 +60,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'oko_api.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -88,9 +92,10 @@ DATABASES = {
     }
 }
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': {
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     }
 }
 
