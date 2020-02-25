@@ -34,8 +34,8 @@ class Login(models.Model):
     username = models.CharField(max_length=50) #primary key
     password = models.CharField(max_length=50) #required
 
-    lass
-    User(models.Model):
+    #lass
+    #User(models.Model):
     email = models.CharField(max_length=75)  # primary key
     username = models.CharField(max_length=60)  # foregin key
     first_name = models.CharField(max_length=35)  # required
