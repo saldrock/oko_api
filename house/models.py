@@ -45,5 +45,5 @@ class User(models.Model):
 
 class Leaderboard(models.Model):
     username = models.ForeignKey(Login, on_delete=models.CASCADE, related_name= 'username')
-    points = models.IntegerField(blank=True)
+    score = models.IntegerField(blank=True)
     ranking = models.IntegerField(blanK=False)
