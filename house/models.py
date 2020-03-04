@@ -43,7 +43,8 @@ class User(models.Model):
     phone_number = models.CharField(max_length=13,default='')
     incentivisation_choice = models.CharField(max_length=13, default='')
 
-class Leaderboard(models.Model):
+class Progress(models.Model):   #links in with leaderboard
     username = models.ForeignKey(Login, on_delete=models.CASCADE, related_name= 'username')
-    score = models.IntegerField(blank=True)
-    ranking = models.IntegerField(blanK=False)
+    score = models.IntegerField(blank=True) #score to determine ranking on leaderboard
+    ranking = models.IntegerField(blanK=False) #ranking on leaderboard
+    money_saved = models.IntegerField(blank=True) #money the user has saved
