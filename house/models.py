@@ -3,6 +3,8 @@ from django.db import models
 
 
 # User stuff Neve
+#test
+#pls i didnt mean to break the code`
 class Room(models.Model):
     name = models.CharField(max_length=36)  # name of the room
 
