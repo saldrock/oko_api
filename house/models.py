@@ -23,6 +23,7 @@ class Suggestions(models.Model):
     suggestion_id = models.IntegerField(primary_key=True, null=False) #ID number of suggestion
     suggestion_name = models.CharField(max_length = 150, null=False) #suggestion
     weather_suggestion = models.CharField(max_length=150, null=False) #weather suggestion
+    room_id = models.ForeignKey(Rooms, on_delete=models.CASCADE, null=False) #the room that the suggestion is for
 
 class Readings(models.Model):  
     reading_id = models.IntegerField(primary_key=True, null=False) #ID number of suggestion
