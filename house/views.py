@@ -3,28 +3,49 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from data_vis.serializers import UserSerializer
-from .models import Room, House, Control, Suggestion
-from .serializers import RoomSerializer, HouseSerializer, SuggestionSerializer, ControlSerializer, UserSerializer
+#from .models import Room, Login, Dwelling
+from .serializers import LoginSerializer, RoomSerializer, DwellingSerializer, DeviceSerializer, SuggestionSerializer,ReadingSerializer, ProgressSerializer, UserSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class LoginViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = LoginSerializer
     permission_classes = (AllowAny,)
 
+
 class RoomViewSet(viewsets.ModelViewSet):
-    queryset = Room.objects.all()
+    queryset = User.objects.all()
     serializer_class = RoomSerializer
     permission_classes = (AllowAny,)
 
-class HouseViewSet(viewsets.ModelViewSet):
-    queryset = House.objects.all()
-    serializer_class = HouseSerializer
+class DwellingViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = DwellingSerializer
+    permission_classes = (AllowAny,)
+
+class DeviceViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = DeviceSerializer
     permission_classes = (AllowAny,)
 
 class SuggestionViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = SuggestionSerializer
+    permission_classes = (AllowAny,)
+
+class ReadingViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = ReadingSerializer
+    permission_classes = (AllowAny,)
+
+class ProgressViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = ProgressSerializer
+    permission_classes = (AllowAny,)
+
+class userViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     permission_classes = (AllowAny,)

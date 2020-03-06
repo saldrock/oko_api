@@ -1,14 +1,13 @@
 from django.contrib import admin
-from .models import Room, House, Control, Suggestion, Devices, Login, Dwelling, Device, Suggestion, Reading
+from .models import Rooms, Dwellings, Devices, Suggestions, Readings, Login, Progress
 
-admin.site.register(Room)
-admin.site.register(House)
-admin.site.register(Control)
-admin.site.register(Suggestion)
+admin.site.register(Rooms)
+admin.site.register(Dwellings)
 admin.site.register(Devices)
+admin.site.register(Suggestions)
+admin.site.register(Readings)
 admin.site.register(Login)
-admin.site.register(Dwelling)
-admin.site.register(Device)
-admin.site.register(Reading)
+admin.site.register(Progress)
+
 
 
