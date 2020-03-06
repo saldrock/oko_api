@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
+
+from data_vis.serializers import RoomSerializer
 from .models import Rooms, Suggestions, Login, Dwellings, Devices, Readings, Progress
 from django.contrib.auth.models import User
 
@@ -12,9 +14,10 @@ class LoginSerializer(serializers.ModelSerializer):
 
 class RoomSerializer(serializers.ModelSerializer):
     # devices = DeviceSerializer(many=True)
+    room_id = RoomSerializer(many=True)
     class Meta:
         model = Rooms
-        fields = ('id', 'room_ID', 'room_name', 'Co2', 'humidity', 'temperature')
+        fields = ('id', 'room_ID', 'room_name', 'Co2', 'humidity', 'temperature','room_id')
 
 
 class DwellingSerializer(serializers.ModelSerializer):

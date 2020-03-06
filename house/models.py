@@ -18,7 +18,7 @@ class Dwellings(models.Model):
 class Devices(models.Model):
     device_id = models.IntegerField(primary_key=True, null=False, default=0)  # ID number of device
     device_name = models.CharField(max_length=50, null=False,default='')  # name of device
-    #room_id = models.ForeignKey(Rooms.room_id, on_delete=models.CASCADE, related_name='devices', null=False)  # room that the device is in
+    room_id = models.ForeignKey(Rooms, on_delete=models.CASCADE, default='', null=False, related_name='Devices')#, related_name='devices', null=False)  # room that the device is in
     status = models.BooleanField(default=False)  # if the device is on or off
 
 
