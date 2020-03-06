@@ -36,7 +36,7 @@ class Login(models.Model):
 
 class User(models.Model):
     email = models.CharField(primary_key=True, max_length=100, null=False)  
-    username = models.ForeignKey(Login.username, on_delete=models.CASCADE, related_name='Login', max_length=60, null=False) 
+    username = models.OneToOneField(Login.username, on_delete=models.CASCADE, related_name='Login', max_length=60, null=False) 
     first_name = models.CharField(max_length=35, null=False)  
     surname = models.CharField(max_length=35, null=False)  
     dwelling_id = models.ForeignKey(Dwellings, on_delete=models.CASCADE, related_name='dwelling_id')
@@ -44,7 +44,7 @@ class User(models.Model):
     incentivisation_choice = models.CharField(max_length=13)
 
 class Progress(models.Model):   #links in with leaderboard
-    username = models.ForeignKey(Login.username, on_delete=models.CASCADE, related_name= 'username', null=False)
+    username = models.OneToOneField(Login.username, on_delete=models.CASCADE, related_name= 'username', null=False)
     score = models.IntegerField(blank=True, default=0) #score to determine ranking on leaderboard
-    ranking = models.IntegerField(blanK=False, default = 100) #ranking on leaderboard
+    ranking = models.IntegerField(blank=False, default = 100) #ranking on leaderboard
     money_saved = models.IntegerField(blank=True, default=0) #money the user has saved
