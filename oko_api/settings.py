@@ -10,7 +10,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['oko-api.herokuapp.com',]
+ALLOWED_HOSTS = ['oko-api.herokuapp.com',
+                 '127.0.0.1',]
 
 # Application definition
 
@@ -63,7 +64,7 @@ AUTH_USER_MODEL = 'account.Account'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite')
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),

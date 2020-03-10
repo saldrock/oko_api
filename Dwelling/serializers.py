@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'password')
-        extra_kwargs = {'password': {'write_only': True, 'required':True}}
+        extra_kwargs = {'password': {'write_only': True, 'required': True}}
 
 
 class SuggestionSerializer(serializers.ModelSerializer):
@@ -43,5 +43,5 @@ class DwellingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dwelling
-        fields = ('dwelling_id', 'dwelling_name','dwelling_progress' , 'dwelling_code', 'dwelling_members',
+        fields = ('dwelling_id', 'dwelling_name', 'dwelling_progress', 'dwelling_code', 'dwelling_members',
                   'dwelling_superUsers', 'rooms')
