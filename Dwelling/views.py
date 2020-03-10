@@ -31,11 +31,16 @@ class DataViewSet(viewsets.ModelViewSet):
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
-    serializer_class = DeviceSerializer
+    serializer_class = RoomSerializer
     permission_classes = (AllowAny,)
 
 
 class DwellingViewSet(viewsets.ModelViewSet):
     queryset = Dwelling.objects.all()
     serializer_class = DwellingSerializer
+    permission_classes = (AllowAny,)
+
+class DeviceViewSet(viewsets.ModelViewSet):
+    queryset = Device.objects.all()
+    serializer_class = DeviceSerializer
     permission_classes = (AllowAny,)

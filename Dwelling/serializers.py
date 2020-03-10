@@ -43,5 +43,5 @@ class DwellingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dwelling
-        fields = ('dwelling_id', 'dwelling_name','Dwelling_progress' , 'dwelling_code', 'dwelling_members',
+        fields = ('dwelling_id', 'dwelling_name','dwelling_progress' , 'dwelling_code', 'dwelling_members',
                   'dwelling_superUsers', 'rooms')

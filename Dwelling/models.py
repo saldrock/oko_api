@@ -8,7 +8,7 @@ from django.db import migrations
 class Dwelling(models.Model):
     dwelling_id = models.IntegerField(primary_key=True, default=0)  # ID number of the dwelling
     dwelling_name = models.CharField(max_length=50, null=False, default='')  # name of the dwelling
-    Dwelling_progress = models.IntegerField(default=0)
+    dwelling_progress = models.IntegerField(default=0)
     dwelling_code = models.CharField(max_length=8, null=False, default='')  # dwelling code used to sign up to dwelling
     dwelling_members = models.CharField(max_length=50000, null=False, default='')  # dwelling code used to sign up to dwelling
     dwelling_superUsers = models.CharField(max_length=50000, null=False, default='')  # dwelling code used to sign up to dwelling
