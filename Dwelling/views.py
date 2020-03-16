@@ -12,6 +12,11 @@ from .serializers import DwellingSerializer, RoomSerializer, DeviceSerializer, D
 from rest_framework.authentication import TokenAuthentication
 
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = Device.objects.all()
+    serializer_class = UserSerializer
+
+
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
     serializer_class = RoomSerializer
