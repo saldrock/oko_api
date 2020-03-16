@@ -21,10 +21,10 @@ class Room(models.Model):
 
 
 class RoomData(models.Model):
-    co2 = models.CharField(max_length=50000000, null=False, default='')  # name of device
-    humidity = models.CharField(max_length=50000000, null=False, default='')  # name of device
-    tempurature = models.CharField(max_length=50000000, null=False, default='')  # name of device
-    light = models.CharField(max_length=50000000, null=False, default='')  # name of device
+    co2 = models.CharField(max_length=10485759, null=False, default='')  # name of device
+    humidity = models.CharField(max_length=10485759, null=False, default='')  # name of device
+    tempurature = models.CharField(max_length=10485759, null=False, default='')  # name of device
+    light = models.CharField(max_length=10485759, null=False, default='')  # name of device
     rooms_data = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='room_data', default='')
 
 
