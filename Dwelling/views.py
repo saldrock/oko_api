@@ -15,7 +15,7 @@ from rest_framework.authentication import TokenAuthentication
 class UserViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
     serializer_class = UserSerializer
-
+#yeet
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
