@@ -16,6 +16,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
     serializer_class = UserSerializer
 #yeet
+#kSFIHSDFD
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
