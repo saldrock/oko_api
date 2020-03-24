@@ -9,6 +9,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dwelling/', include('Dwelling.urls')),
     path('account/', include('account.urls'))
-    #path('reg/', include('account.urls'))
 
 ]

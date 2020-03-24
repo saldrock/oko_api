@@ -43,8 +43,7 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = { #rest framework auth settings
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
 ROOT_URLCONF = 'oko_api.urls'
