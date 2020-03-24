@@ -1,12 +1,14 @@
 from django.urls import path
 from rest_framework import routers
 from django.conf.urls import include
-from .views import registrationView
+from .views import (
+    registration_view,
+)
 
 
-router = routers.DefaultRouter()
-router.register('auth/', registrationView)
+app_name = "account"
+
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('register',registration_view, name="register"),
 ]

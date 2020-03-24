@@ -1,21 +1,21 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from django.http.response import HttpResponse
-from django.views.decorators.csrf import csrf_protect
+from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import action
-from rest_framework import status, viewsets
-from .models import MyAccountManager
-from account.forms import RegistrationForm
+from rest_framework.decorators import api_view
 
-@csrf_protect
-def registrationView(request):
-    context = {}
-    if request.POST:
-        form = RegistrationForm(request.POST)
-        if form.isValid():
-            form.save()
-            email = form.cleaned_data.get('email')
-            raw_password = form.cleaned_data.get('password1')
-            account = authenticate(email=email, password=raw_password)
-            login(request, account)
+from .serializers import RegistrationSerializer
+
+
+@api_view(['POST', ])
+def registration_view(request):
+
+	if request.method == 'POST':
+		serializer = RegistrationSerializer(data=request.data)
+		data = {}
+		if serializer.is_valid():
+			account = serializer.save()
+			data['response'] = 'successfully registered new user.'
+			data['email'] = account.email
+			data['username'] = account.username
+		else:
+			data = serializer.errors
+		return Response(data)
