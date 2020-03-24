@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .models import Dwelling, Room, Device
+from .models import Dwelling, Room, Device,RoomData
 from .serializers import DwellingSerializer, RoomSerializer, DeviceSerializer, DataSerializer, UserSerializer
 from rest_framework.authentication import TokenAuthentication
 
@@ -15,17 +15,15 @@ from rest_framework.authentication import TokenAuthentication
 class UserViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
     serializer_class = UserSerializer
-#yeet
-#kSFIHSDFD
 
 class RoomViewSet(viewsets.ModelViewSet):
-    queryset = Device.objects.all()
+    queryset = Room.objects.all()
     serializer_class = RoomSerializer
     permission_classes = (AllowAny,)
 
 
 class DataViewSet(viewsets.ModelViewSet):
-    queryset = Device.objects.all()
+    queryset = RoomData.objects.all()
     serializer_class = DataSerializer
     permission_classes = (AllowAny,)
 
