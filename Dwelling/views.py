@@ -7,9 +7,20 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .models import Dwelling, Room, Device,RoomData
-from .serializers import DwellingSerializer, RoomSerializer, DeviceSerializer, DataSerializer
+from .models import Dwelling, Room, Device,RoomData, Suggestion
+from .serializers import (
+    DwellingSerializer,
+    RoomSerializer,
+    DeviceSerializer,
+    DataSerializer,
+    SuggestionSerializer,
+)
 from rest_framework.authentication import TokenAuthentication
+
+class SuggestionViewSet(viewsets.ModelViewSet):
+    queryset = Suggestion.objects.all()
+    serializer_class = SuggestionSerializer
+    permission_classes = (AllowAny,)
 
 
 class RoomViewSet(viewsets.ModelViewSet):
