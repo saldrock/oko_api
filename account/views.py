@@ -22,6 +22,7 @@ def registration_view(request):
 			data['goal'] 			= account.goal
 			data['is_house_admin'] 	= account.is_house_admin
 			data['is_house_super'] 	= account.is_house_super
+			data['phone_number'] 	= account.phone_number
 
 		else:
 			data = serializer.errors

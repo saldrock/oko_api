@@ -45,19 +45,20 @@ class Account(AbstractBaseUser):
 
     ]
 
-    email                    = models.EmailField(verbose_name='email', max_length=60, unique=True)
-    username                 = models.CharField(max_length=30, unique=True)
-    date_joined              = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
-    last_login               = models.DateTimeField(verbose_name="last_login", auto_now=True)
+    email               = models.EmailField(verbose_name='email', max_length=60, unique=True)
+    username            = models.CharField(max_length=30, unique=True)
+    date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
+    last_login          = models.DateTimeField(verbose_name="last_login", auto_now=True)
 
-    is_house_admin           = models.BooleanField(default=False)
-    is_house_super           = models.BooleanField(default=False)
-    goal                     = models.CharField(max_length=30, choices=GOAL_CHOICES)
+    is_house_admin      = models.BooleanField(default=False)
+    is_house_super      = models.BooleanField(default=False)
+    goal                = models.CharField(max_length=30, choices=GOAL_CHOICES)
+    phone_number         = models.CharField(max_length=30, default='')
 
-    is_admin        = models.BooleanField(default=False)
-    is_active       = models.BooleanField(default=True)
-    is_staff        = models.BooleanField(default=False)
-    is_superuser    = models.BooleanField(default=False)
+    is_admin            = models.BooleanField(default=False)
+    is_active           = models.BooleanField(default=True)
+    is_staff            = models.BooleanField(default=False)
+    is_superuser        = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'  # whatever you want to be able to login with
     REQUIRED_FIELDS = ['username',]
