@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'Dwelling',
     'account',
+    'user_settings',
 ]
 
 MIDDLEWARE = [
