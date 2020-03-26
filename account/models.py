@@ -39,11 +39,12 @@ class MyAccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
-
     GOAL_CHOICES = [
-        ('SM', 'Save Money'),
-        ('HE', 'Help Environment'),
+        ('SM','Save Money'),
+        ('HE', 'Help Environment')
+
     ]
+
     email                    = models.EmailField(verbose_name='email', max_length=60, unique=True)
     username                 = models.CharField(max_length=30, unique=True)
     date_joined              = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
@@ -51,12 +52,12 @@ class Account(AbstractBaseUser):
 
     is_house_admin           = models.BooleanField(default=False)
     is_house_super           = models.BooleanField(default=False)
-    goal                     = models.CharField(max_length=2, choices=GOAL_CHOICES)
+    goal                     = models.CharField(max_length=30, choices=GOAL_CHOICES)
 
-    is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    is_admin        = models.BooleanField(default=False)
+    is_active       = models.BooleanField(default=True)
+    is_staff        = models.BooleanField(default=False)
+    is_superuser    = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'  # whatever you want to be able to login with
     REQUIRED_FIELDS = ['username',]

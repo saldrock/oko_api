@@ -14,12 +14,14 @@ def registration_view(request):
 		data = {}
 		if serializer.is_valid():
 			account = serializer.save()
-			data['response'] = 'successfully registered new user.'
-			data['email'] = account.email
-			data['username'] = account.username
-			token = Token.objects.get(user=account).key
-			data['token'] = token
-			data['goal'] = account.goal
+			data['response'] 		= 'successfully registered new user.'
+			data['email'] 			= account.email
+			data['username'] 		= account.username
+			token 					= Token.objects.get(user=account).key
+			data['token'] 			= token
+			data['goal'] 			= account.goal
+			data['is_house_admin'] 	= account.is_house_admin
+			data['is_house_super'] 	= account.is_house_super
 
 		else:
 			data = serializer.errors
