@@ -19,13 +19,13 @@ class SuggestionSerializer(serializers.ModelSerializer):
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoomData
-        fields = ('id', 'co2', 'humidity', 'tempurature', 'light')
+        fields = ('id', 'co2', 'humidity', 'temperature', 'light')
 
 
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ('id', 'device_name', 'mac_adress')
+        fields = ('id', 'device_name', 'mac_address')
 
 
 class RoomSerializer(serializers.ModelSerializer):
