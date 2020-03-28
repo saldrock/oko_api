@@ -31,7 +31,7 @@ class Room(models.Model):
 class RoomData(models.Model):
     co2 = models.CharField(max_length=10485759, null=False, default='')  # name of device
     humidity = models.CharField(max_length=10485759, null=False, default='')  # name of device
-    tempurature = models.CharField(max_length=10485759, null=False, default='')  # name of device
+    temperature = models.CharField(max_length=10485759, null=False, default='')  # name of device
     light = models.CharField(max_length=10485759, null=False, default='')  # name of device
     rooms_data = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='room_data', default='')
 
@@ -39,7 +39,7 @@ class RoomData(models.Model):
 class Device(models.Model):
     device_name = models.CharField(max_length=50, null=False, default='')  # name of device
     state = models.BooleanField(default=False),  # if the device is on or off
-    mac_adress = models.CharField(max_length=50, null=False, default='')  # name of device
+    mac_address = models.CharField(max_length=50, null=False, default='')  # name of device
     room_devices = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='devices')
 
 
