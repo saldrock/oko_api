@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Dwelling, Room, Device, RoomData, Suggestion, 
+from .models import Dwelling, Room, Device, RoomData, Suggestion 
 from django.contrib.auth.models import User
 
 
