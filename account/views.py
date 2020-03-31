@@ -20,10 +20,8 @@ def registration_view(request):
 			token 					= Token.objects.get(user=account).key
 			data['token'] 			= token
 			# data['goal'] 			= account.goal
-			# data['is_house_admin'] 	= account.is_house_admin
-			# data['is_house_super'] 	= account.is_house_super
 			# data['phone_number'] 	= account.phone_number
-			# data['house_code']		= account.house_code
+			data['house_code']		= account.house_code
 
 		else:
 			data = serializer.errors

@@ -50,9 +50,7 @@ class Account(AbstractBaseUser):
     date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
     last_login          = models.DateTimeField(verbose_name="last_login", auto_now=True)
 
-    # house_code          = models.CharField(max_length=30, default='')
-    # is_house_admin      = models.BooleanField(default=False)
-    # is_house_super      = models.BooleanField(default=False)
+    house_code          = models.CharField(max_length=30, default='')
     # goal                = models.CharField(max_length=30, choices=GOAL_CHOICES)
     # phone_number        = models.CharField(max_length=30, default='')
 
