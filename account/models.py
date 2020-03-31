@@ -63,7 +63,7 @@ class Account(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'  # whatever you want to be able to login with
     REQUIRED_FIELDS = ['username',]
-
+    #yeet
     objects = MyAccountManager()
 
     def __str__(self):
