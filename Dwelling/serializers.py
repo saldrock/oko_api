@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 class SuggestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Suggestion
-        fields = ('id', 'suggestion')
+        fields = ('id', 'suggestion', 'room_suggestion')
 
 
 class DataSerializer(serializers.ModelSerializer):
@@ -25,7 +25,7 @@ class DataSerializer(serializers.ModelSerializer):
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ('id', 'device_name', 'mac_address', 'state')
+        fields = ('id', 'device_name', 'mac_address', 'state', 'room_devices', 'energy_used')
 
 
 class RoomSerializer(serializers.ModelSerializer):
@@ -43,5 +43,4 @@ class DwellingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dwelling
-        fields = ('dwelling_id', 'dwelling_name', 'dwelling_progress', 'dwelling_code', 'dwelling_members',
-                  'dwelling_superUsers', 'rooms')
+        fields = ('dwelling_id', 'dwelling_name', 'dwelling_code', 'rooms')
