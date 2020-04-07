@@ -24,23 +24,18 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    #def create_superuser(self, email, username, password):
-    #    user = self.create_user(
-    #            email=self.normalize_email(email),
-    #            password=password,
-    #            username=username,
-    #        )
-    #    user.is_admin = True
-    #    user.is_staff = True
-    #    user.is_superuser = True
-    #    user.save(using=self._db)
-    #    return user
+    def create_superuser(self, email, username, password):
+        user = self.create_user(
+                email=self.normalize_email(email),
+                password=password,
+                username=username,
+            )
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
 
-class User_Data(AbstractBaseUser):
-    username = model.ForeignKey(Account, on_delete=models.CASCADE, related_name='data') 
-    energyused_ytd = models.IntegerField()            #users' usage year to date
-    energyused_mtd = models.IntegerField()            #users' usage month to date
-    energyused_day = models.IntegerField()            #users usage for today
 
 
 class Account(AbstractBaseUser):
@@ -50,28 +45,29 @@ class Account(AbstractBaseUser):
 
     ]
     ACCOUNT_CHOICES =  [
-        ('super_admin'),
-        ('admin'),
-        ('non_admin')
+        ('SA','super_admin'),
+        ('AD','admin'),
+        ('NA','non_admin')
     ]
-
+    #required fields
     email               = models.EmailField(verbose_name='email', max_length=60, unique=True)
     username            = models.CharField(max_length=30, unique=True, primary_key=True)
-    first_name          = models.CharField(max_length=50, blank=False)
-    surname             = models.CharField(max_length=60, blank=False)
-    admin_type          = models.CharField(max_length=, choices=ACCOUNT_CHOICES)
-    #date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
-    #last_login          = models.DateTimeField(verbose_name="last_login", auto_now=True)
+    is_admin            = models.BooleanField(default=False) #system admin
+    is_staff            = models.BooleanField(default=False) #memeber of staff
+    date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
+    last_login          = models.DateTimeField(verbose_name="last_login", auto_now=True)
+    is_active           = models.BooleanField(default=True)
+    is_superuser        = models.BooleanField(default=False)
 
-     dwelling_code       = models.ForeignKey(Account,on_delete=models.CASCADE)
-     incentivisation_choice= models.CharField(max_length=16, choices=GOAL_CHOICES)
-     goal                = models.IntegerField(null=True)
-     phone_number        = models.CharField(max_length=13, default='')
+    #custom fields
+    # dwelling_code          = models.ForeignKey(Account,on_delete=models.CASCADE)
 
-    #is_admin            = models.BooleanField(default=False)
-    #is_active           = models.BooleanField(default=True)
-    #is_staff            = models.BooleanField(default=False)
-    #is_superuser        = models.BooleanField(default=False)
+    first_name              = models.CharField(max_length=50, blank=False, default='Null')
+    surname                 = models.CharField(max_length=60, blank=False, default='Null')
+    incentivisation_choice  = models.CharField(max_length=16, choices=GOAL_CHOICES,default='SM')
+    goal                    = models.IntegerField(null=True)
+    phone_number            = models.CharField(max_length=13, default='')
+    admin_type              = models.CharField(max_length=2,default='NA', choices=ACCOUNT_CHOICES)
 
     USERNAME_FIELD = 'email'  # whatever you want to be able to login with
     REQUIRED_FIELDS = ['username',]
@@ -80,8 +76,8 @@ class Account(AbstractBaseUser):
     def __str__(self):
         return self.email
 
-    #def has_perm(self, perm, obj=None):
-    #    return self.is_admin
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
 
     def has_module_perms(self, app_label):
         return True
@@ -90,3 +86,10 @@ class Account(AbstractBaseUser):
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
+
+
+class User_Data(models.Model):
+    # username            = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='username')
+    energyused_ytd      = models.IntegerField(null=False, default=0) #users' usage year to date
+    energyused_mtd      = models.IntegerField(null=False, default=0) #users' usage month to date
+    energyused_day      = models.IntegerField(null=False, default=0) #users usage for today
