@@ -13,34 +13,34 @@ class UserSerializer(serializers.ModelSerializer):
 class SuggestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Suggestion
-        fields = ('id', 'suggestion', 'room_suggestion')
+        fields = ('id','related_room', 'suggestion',)
 
 
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoomData
-        fields = ('id', 'co2', 'humidity', 'temperature')
+        fields = ('related_room', 'co2', 'humidity', 'temperature')
 
 
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ('id', 'device_name', 'mac_address', 'state', 'room_devices', 'energy_used')
+        fields = ('device_code','room', 'device_name', 'mac_address', 'energy_used')
 
 
 class RoomSerializer(serializers.ModelSerializer):
-    devices = DeviceSerializer(many=True)
-    room_data = DataSerializer(many=True)
-    suggestion = SuggestionSerializer(many=True)
+    devices = DeviceSerializer(many=True, read_only=True)
+    data = DataSerializer(many=True, read_only=True)
+    suggestion = SuggestionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Room
-        fields = ('room_id', 'room_name', 'suggestion', 'devices', 'room_data')
+        fields = ('room_code','related_dwelling', 'room_name', 'data', 'devices','suggestion')
 
 
 class DwellingSerializer(serializers.ModelSerializer):
-    rooms = RoomSerializer(many=True)
+    room = RoomSerializer(many=True, read_only=True)
 
     class Meta:
         model = Dwelling
-        fields = ('dwelling_name','has_superAdmin' ,'dwelling_code', 'rooms',)
+        fields = ('dwelling_code','dwelling_name','has_superAdmin','room')
