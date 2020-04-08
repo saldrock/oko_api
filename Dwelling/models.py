@@ -42,6 +42,9 @@ class Device(models.Model):
     mac_address = models.CharField(max_length=50, null=False, default='')  # name of device
     room_devices = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='devices')
     energy_used = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.device_name
     
 
 

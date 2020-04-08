@@ -23,22 +23,22 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ['email', 'username', 'password', 'password2', 'dwelling_code',
-                  'incentivisation_choice','goal','phone_number','admin_type']
+        fields = ['email', 'username', 'password', 'password2','first_name', 'surname',
+                  'incentivisation_choice','goal','phone_number','admin_type',]
         extra_kwargs = {
             'password': {'write_only': True},
         }
 
     def save(self):
         account = Account(
-            email           =self.validated_data['email'],
-            username        =self.validated_data['username'],
-            incentivisation_choice   = self.valided_date['incentivisation_choice'],
-            goal=self.valided_date['goal'],
-            phone_number=self.valided_date['phone_number'],
-            admin_type=self.valided_date['admin_type'],
-
-
+            email                   =self.validated_data['email'],
+            username                =self.validated_data['username'],
+            first_name              =self.validated_data['first_name'],
+            surname                 =self.validated_data['surname'],
+            incentivisation_choice  =self.validated_data['incentivisation_choice'],
+            goal                    =self.validated_data['goal'],
+            phone_number            =self.validated_data['phone_number'],
+            admin_type              =self.validated_data['admin_type'],
         )
         password    = self.validated_data['password']
         password2   = self.validated_data['password2']

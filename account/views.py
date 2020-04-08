@@ -25,6 +25,8 @@ def registration_view(request):
 			data['username'] 		= account.username
 			token 					= Token.objects.get(user=account).key
 			data['token'] 			= token
+			data['first_name'] = account.first_name
+			data['surname'] = account.surname
 			data['incentivisation_choice']	= account.incentivisation_choice
 			data['goal'] = account.goal
 			data['phone_number'] = account.phone_number
