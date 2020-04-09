@@ -60,8 +60,7 @@ class Account(AbstractBaseUser):
     is_superuser        = models.BooleanField(default=False)
 
     #custom fields
-    # dwelling_code          = models.ForeignKey(Account,on_delete=models.CASCADE)
-
+    dwelling_code           = models.CharField(max_length=50, blank=False, default='Null')
     first_name              = models.CharField(max_length=50, blank=False, default='Null')
     surname                 = models.CharField(max_length=60, blank=False, default='Null')
     incentivisation_choice  = models.CharField(max_length=16, choices=GOAL_CHOICES,default='SM')

@@ -27,6 +27,7 @@ def registration_view(request):
 			data['token'] 			= token
 			data['first_name'] 		= account.first_name
 			data['surname'] 		= account.surname
+			data['dwelling_code']	= account.dwelling_code
 			data['incentivisation_choice']	= account.incentivisation_choice
 			data['goal'] 					= account.goal
 			data['phone_number'] 			= account.phone_number
