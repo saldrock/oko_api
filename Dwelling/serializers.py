@@ -25,7 +25,7 @@ class DataSerializer(serializers.ModelSerializer):
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ('device_code','room', 'device_name', 'mac_address', 'energy_used')
+        fields = ('device_code','room', 'device_name', 'mac_address', 'state', 'energy_used')
 
 
 class RoomSerializer(serializers.ModelSerializer):
