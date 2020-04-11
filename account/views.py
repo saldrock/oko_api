@@ -6,6 +6,8 @@ from .serializers import RegistrationSerializer, User_Data_Serializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import User_Data
+from django.core.mail import send_mail
+
 class User_DataViewSet(viewsets.ModelViewSet):
 	queryset = User_Data.objects.all()
 	serializer_class = User_Data_Serializer
@@ -37,3 +39,11 @@ def registration_view(request):
 		else:
 			data = serializer.errors
 		return Response(data)
+
+send_mail(
+	'Oko Verification Email',
+	'Your verification code is XYZ',
+	'okodevelopment@gmail.com',
+	['nevecurnyn1999@gmail.com'],
+	fail_silently=False,
+).send()
