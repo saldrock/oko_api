@@ -36,8 +36,7 @@ class Device(models.Model):
     device_name     = models.CharField(max_length=50, null=False, default='')  # name of device
     mac_address     = models.CharField(max_length=50, null=False, default='')  # name of device
     energy_used     = models.IntegerField(default=0)
-    state           = models.BooleanField(default=False)
-    # state           = models.CharField(max_length=5, default="False")  # if the device is on or off
+    state           = models.BooleanField(default=False) # on or off
     room            = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='devices', default='')
 
     def __str__(self):

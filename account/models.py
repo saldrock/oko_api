@@ -67,6 +67,7 @@ class Account(AbstractBaseUser):
     goal                    = models.IntegerField(null=True)
     phone_number            = models.CharField(max_length=13, default='')
     admin_type              = models.CharField(max_length=2,default='NA', choices=ACCOUNT_CHOICES)
+    logged_in               = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'  # whatever you want to be able to login with
     REQUIRED_FIELDS = ['username',]
