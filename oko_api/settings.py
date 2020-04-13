@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 
     'django.middleware.cache.CacheMiddleware',
-    'django.middleware.doc.XViewMiddleware',
+    # 'django.middleware.doc.XViewMiddleware',
 
 ]
 
