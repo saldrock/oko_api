@@ -56,3 +56,18 @@ class Account_Serializer(serializers.BaseSerializer):
     class Meta:
         model = Account
         fields = '__all__'
+    def save(self):
+        account = Account(
+            email                   =Account.email,
+            username                =Account.username,
+            #dwelling_code           ='dwelling_code',
+            #first_name              ='first_name',
+            #surname                 ='surname',
+            #incentivisation_choice  ='incentivisation_choice',
+            # goal                    ='goal',
+            #phone_number            ='phone_number',
+            #admin_type              ='admin_type',
+          # logged_in               ='logged_in',
+        )
+        account.save()
+        return account

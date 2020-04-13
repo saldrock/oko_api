@@ -15,10 +15,20 @@ class User_DataViewSet(viewsets.ModelViewSet):
 	permission_classes = (AllowAny,)
 
 
-class AccountViewSet(viewsets.ModelViewSet):
+class accout_view(viewsets.ModelViewSet):
 	queryset = Account.objects.all()
 	serializer_class = Account_Serializer
 	permission_classes = (AllowAny, )
+
+@api_view(['GET', ])
+def account_view(request):
+	if request.method == 'GET':
+		serializer = Account_Serializer(data=request.data)
+		data = {}
+		account = serializer.save()
+		data['email'] = Account.email
+		# data = [Account.email]
+	return Response(data)
 
 
 @api_view(['POST', ])
@@ -29,14 +39,14 @@ def registration_view(request):
 		data = {}
 		if serializer.is_valid():
 			account = serializer.save()
-			data['response'] 		= 'successfully registered new user.'
-			data['email'] 			= account.email
-			data['username'] 		= account.username
-			token 					= Token.objects.get(user=account).key
-			data['token'] 			= token
-			data['first_name'] 		= account.first_name
-			data['surname'] 		= account.surname
-			data['dwelling_code']	= account.dwelling_code
+			data['response'] 				= 'successfully registered new user.'
+			data['email'] 					= account.email
+			data['username'] 				= account.username
+			#token 							= Token.objects.get(user=account).key
+			#data['token'] 					= token
+			data['first_name'] 				= account.first_name
+			data['surname'] 				= account.surname
+			data['dwelling_code']			= account.dwelling_code
 			data['incentivisation_choice']	= account.incentivisation_choice
 			data['goal'] 					= account.goal
 			data['phone_number'] 			= account.phone_number
