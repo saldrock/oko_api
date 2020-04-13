@@ -16,7 +16,7 @@ from account.models import Account, User_Data
 class User_Data_Serializer():
     class Meta:
         model = User_Data
-        fields = fields = ('id', 'energyused_ytd', 'energyused_mtd','energyused_day')
+        fields = ('id', 'energyused_ytd', 'energyused_mtd','energyused_day')
 
 class RegistrationSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
@@ -50,3 +50,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
         account.set_password(password)
         account.save()
         return account
+
+class Account_Serializer():
+    class Meta:
+        model = Account
+        fields = '__all__'

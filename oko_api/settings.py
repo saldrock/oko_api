@@ -79,6 +79,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'oko_api.wsgi.application'
 
 AUTH_USER_MODEL = 'account.Account'
+AUTH_PROFILE_MODULE = 'account.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -109,10 +110,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND =
-
 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 

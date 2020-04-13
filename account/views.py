@@ -5,13 +5,20 @@ from rest_framework.decorators import api_view
 from .serializers import RegistrationSerializer, User_Data_Serializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import User_Data
+from .models import User_Data, Account
 from django.core.mail import send_mail
+from .serializers import Account_Serializer
 
 class User_DataViewSet(viewsets.ModelViewSet):
 	queryset = User_Data.objects.all()
 	serializer_class = User_Data_Serializer
 	permission_classes = (AllowAny,)
+
+
+class AccountViewSet(viewsets.ModelViewSet):
+	queryset = Account.objects.all()
+	serializer_class = Account_Serializer
+	permission_classes = (AllowAny, )
 
 
 @api_view(['POST', ])
@@ -46,4 +53,4 @@ send_mail(
 	'okodevelopment@gmail.com',
 	['nevecurnyn1999@gmail.com'],
 	fail_silently=False,
-).send()
+)# .send()
