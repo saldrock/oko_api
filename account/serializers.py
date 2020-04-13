@@ -48,5 +48,5 @@ class RegistrationSerializer(serializers.ModelSerializer):
         if password != password2:
             raise serializers.ValidationError({'password': 'Passwords must match.'})
         account.set_password(password)
-        account.save()
+        account.save() #s
         return account
