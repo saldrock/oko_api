@@ -51,6 +51,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+
+    'django.middleware.cache.CacheMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+
 ]
 
 REST_FRAMEWORK = { #rest framework auth settings

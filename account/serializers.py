@@ -13,7 +13,7 @@ from account.models import Account, User_Data
 # 	def validate(self, data):
 # 		password = data.get('password')
 # 		email = data.get('email')
-class User_Data_Serializer():
+class User_Data_Serializer(serializers.ModelSerializer):
     class Meta:
         model = User_Data
         fields = ('id', 'energyused_ytd', 'energyused_mtd','energyused_day')
@@ -51,7 +51,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
         account.save()
         return account
 
-class Account_Serializer():
+
+class Account_Serializer(serializers.BaseSerializer):
     class Meta:
         model = Account
         fields = '__all__'
