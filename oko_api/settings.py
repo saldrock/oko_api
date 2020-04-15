@@ -3,13 +3,13 @@ from decouple import config
 from dj_database_url import parse as dburl
 
 #verification email settings
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'okodevlopment@gmail.com'
-EMAIL_HOST_PASSWORD = 'iLovesoftware110%'
+# EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'okodevlopment@gmail.com'
+# EMAIL_HOST_PASSWORD = 'iLovesoftware110%'
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -83,7 +83,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'oko_api.wsgi.application'
 
 AUTH_USER_MODEL = 'account.Account'
-AUTH_PROFILE_MODULE = 'account.Account'
+# AUTH_PROFILE_MODULE = 'account.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

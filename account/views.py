@@ -57,10 +57,10 @@ def registration_view(request):
 			data = serializer.errors
 		return Response(data)
 
-send_mail(
-	'Oko Verification Email',
-	'Your verification code is XYZ',
-	'okodevelopment@gmail.com',
-	['nevecurnyn1999@gmail.com'],
-	fail_silently=False,
-)# .send()
+# send_mail(
+	# 'Oko Verification Email',
+	# 'Your verification code is XYZ',
+	# 'okodevelopment@gmail.com',
+	# ['nevecurnyn1999@gmail.com'],
+	# fail_silently=False,
+#)# .send()
