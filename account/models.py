@@ -108,12 +108,12 @@ class Account_unsecure(models.Model):
     #required fields
     email               = models.EmailField(verbose_name='email', max_length=60, unique=True)
     username            = models.CharField(max_length=30, unique=True, primary_key=True)
-    is_admin            = models.BooleanField(default=False) #system admin
-    is_staff            = models.BooleanField(default=False) #memeber of staff
-    date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
-    last_login          = models.DateTimeField(verbose_name="last_login", auto_now=True)
-    is_active           = models.BooleanField(default=True)
-    is_superuser        = models.BooleanField(default=False)
+    #is_admin            = models.BooleanField(default=False) #system admin
+    #is_staff            = models.BooleanField(default=False) #memeber of staff
+    #date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
+    #last_login          = models.DateTimeField(verbose_name="last_login", auto_now=True)
+    #is_active           = models.BooleanField(default=True)
+    #is_superuser        = models.BooleanField(default=False)
 
     #custom fields
     password                = models.CharField(max_length=50, blank=False, default='Null')
