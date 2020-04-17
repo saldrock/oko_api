@@ -5,9 +5,9 @@ from rest_framework.decorators import api_view
 from .serializers import RegistrationSerializer, User_Data_Serializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import User_Data, Account
+from .models import User_Data, Account, Account_unsecure
 from django.core.mail import send_mail
-from .serializers import Account_Serializer
+from .serializers import Account_Unsecure_Serializer
 
 class User_DataViewSet(viewsets.ModelViewSet):
 	queryset = User_Data.objects.all()
@@ -15,20 +15,11 @@ class User_DataViewSet(viewsets.ModelViewSet):
 	permission_classes = (AllowAny,)
 
 
-class accout_view(viewsets.ModelViewSet):
-	queryset = Account.objects.all()
-	serializer_class = Account_Serializer
+class account_view(viewsets.ModelViewSet):
+	queryset = Account_unsecure.objects.all()
+	serializer_class = Account_Unsecure_Serializer
 	permission_classes = (AllowAny, )
 
-@api_view(['GET', ])
-def account_view(request):
-	if request.method == 'GET':
-		serializer = Account_Serializer(data=request.data)
-		data = {}
-		account = serializer.save()
-		data['email'] = Account.email
-		# data = [Account.email]
-	return Response(data)
 
 
 @api_view(['POST', ])
@@ -42,8 +33,8 @@ def registration_view(request):
 			data['response'] 				= 'successfully registered new user.'
 			data['email'] 					= account.email
 			data['username'] 				= account.username
-			#token 							= Token.objects.get(user=account).key
-			#data['token'] 					= token
+			token 							= Token.objects.get(user=account).key
+			data['token'] 					= token
 			data['first_name'] 				= account.first_name
 			data['surname'] 				= account.surname
 			data['dwelling_code']			= account.dwelling_code

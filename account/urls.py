@@ -14,9 +14,13 @@ from .views import (
 )
 
 app_name = "account"
+router = routers.DefaultRouter()
+router.register('users',account_view)
 
 urlpatterns = [
-    path('register',registration_view, name="register"),
-    path('login',obtain_auth_token, name="login"),
-    path('user',account_view, name='userlist'),
+    # path('register',registration_view, name="register"),
+    # path('login',obtain_auth_token, name="login"),
+    # path('user',account_view, name='userlist'),
+    path('', include(router.urls)),
 ]
+

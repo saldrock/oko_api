@@ -48,3 +48,6 @@ class Suggestion(models.Model):
     suggestion      = models.CharField(max_length=150, null=False, default=0)  # suggestion on what to do
     related_room    = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='suggestion')
 
+
+
+
