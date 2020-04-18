@@ -7,8 +7,7 @@ from django.db import migrations
 class Dwelling(models.Model):
     dwelling_name   = models.CharField(max_length=50, null=False, default='unnamed dwelling')  # name of the dwelling
     has_superAdmin  = models.BooleanField(default=False)
-    dwelling_code   = models.CharField(primary_key=True,max_length=8, null=False, default='')  # dwelling code used to sign up to dwelling
-
+    dwelling_code   = models.CharField(max_length=8, null=False, default='null')  # dwelling code used to sign up to dwelling
 
     def __str__(self):
         return self.dwelling_name
