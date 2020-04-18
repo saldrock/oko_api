@@ -107,7 +107,7 @@ class Account_unsecure(models.Model):
     ]
     #required fields
     email               = models.EmailField(verbose_name='email', max_length=60, unique=True)
-    username            = models.CharField(max_length=30, unique=True, primary_key=True)
+    username            = models.CharField(max_length=30, unique=True, primary_key=True, default='null')
     #is_admin            = models.BooleanField(default=False) #system admin
     #is_staff            = models.BooleanField(default=False) #memeber of staff
     #date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
@@ -116,14 +116,14 @@ class Account_unsecure(models.Model):
     #is_superuser        = models.BooleanField(default=False)
 
     #custom fields
-    password                = models.CharField(max_length=50, blank=False, default='Null')
-    password2               = models.CharField(max_length=50, blank=False, default='Null')
-    dwelling_code           = models.CharField(max_length=50, blank=False, default='Null')
-    first_name              = models.CharField(max_length=50, blank=False, default='Null')
-    surname                 = models.CharField(max_length=60, blank=False, default='Null')
+    password                = models.CharField(max_length=50, blank=False, default='null')
+    password2               = models.CharField(max_length=50, blank=False, default='null')
+    dwelling_code           = models.CharField(max_length=50, blank=False, default='null')
+    first_name              = models.CharField(max_length=50, blank=False, default='null')
+    surname                 = models.CharField(max_length=60, blank=False, default='null')
     incentivisation_choice  = models.CharField(max_length=16, choices=GOAL_CHOICES,default='SM')
     goal                    = models.IntegerField(null=True)
-    phone_number            = models.CharField(max_length=13, default='')
+    phone_number            = models.CharField(max_length=13, default='null')
     admin_type              = models.CharField(max_length=2,default='NA', choices=ACCOUNT_CHOICES)
     logged_in               = models.BooleanField(default=True)
     def __str__(self):
