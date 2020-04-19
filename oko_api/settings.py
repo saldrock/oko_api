@@ -99,7 +99,7 @@ CORS_ALLOW_METHODS = [
     'OPTIONS',
     'PATCH',
     'POST',
-    'PUT'
+    'PUT',
 ]
 
 # Password validation
