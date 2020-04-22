@@ -97,7 +97,7 @@ class User_Data(models.Model):
 
 
 # This is unsecure version of the accounts system as with the secure verison the front end has issues.
-class Account_unsecure(models.Model):
+class Account(models.Model):
     GOAL_CHOICES = [
         ('SM','Save Money'),
         ('HE', 'Help Environment')
