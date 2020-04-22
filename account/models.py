@@ -38,7 +38,7 @@ class MyAccountManager(BaseUserManager):
 
 
 # secure version of the accounts system
-class Account(AbstractBaseUser):
+class Account_secured(AbstractBaseUser):
     GOAL_CHOICES = [
         ('SM','Save Money'),
         ('HE', 'Help Environment')
