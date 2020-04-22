@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from account.models import Account, User_Data, Account_unsecure
+from account.models import Account, User_Data
 
 
 # class LoginSerializer(serializers.ModelSerializer):
@@ -52,7 +52,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         return account
 
 
-class Account_Unsecure_Serializer(serializers.ModelSerializer):
+class Account_Secure_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Account_unsecure
         fields = '__all__'
