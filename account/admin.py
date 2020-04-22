@@ -4,7 +4,7 @@ import account
 from account.models import Account, User_Data, Account_unsecure
 from django.contrib.auth.admin import UserAdmin
 
-
+# Registering apps to the API
 class AccountAdmin(UserAdmin):
     list_display = ('email', 'username', 'date_joined', 'last_login', 'is_admin', 'is_staff')
     search_fields = ('email', 'username',)

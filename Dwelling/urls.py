@@ -3,6 +3,7 @@ from rest_framework import routers
 from django.conf.urls import include
 from .views import DwellingViewSet,RoomViewSet, DataViewSet, DeviceViewSet,SuggestionViewSet
 
+# dwelling URls
 router = routers.DefaultRouter()
 router.register('house', DwellingViewSet)
 router.register('room', RoomViewSet)

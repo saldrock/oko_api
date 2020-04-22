@@ -37,7 +37,7 @@ class MyAccountManager(BaseUserManager):
         return user
 
 
-
+# secure version of the accounts system
 class Account(AbstractBaseUser):
     GOAL_CHOICES = [
         ('SM','Save Money'),
@@ -89,11 +89,14 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class User_Data(models.Model):
-    # username            = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='username')
+    # user is is automaticly asigned on POST
+    username            = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='username')
     energyused_ytd      = models.IntegerField(null=False, default=0) #users' usage year to date
     energyused_mtd      = models.IntegerField(null=False, default=0) #users' usage month to date
     energyused_day      = models.IntegerField(null=False, default=0) #users usage for today
 
+
+# This is unsecure version of the accounts system as with the secure verison the front end has issues.
 class Account_unsecure(models.Model):
     GOAL_CHOICES = [
         ('SM','Save Money'),
@@ -106,16 +109,8 @@ class Account_unsecure(models.Model):
         ('NA','non_admin')
     ]
     #required fields
-    email               = models.EmailField(verbose_name='email', max_length=60, unique=True)
-    username            = models.CharField(max_length=30, unique=True, primary_key=True, default='null')
-    #is_admin            = models.BooleanField(default=False) #system admin
-    #is_staff            = models.BooleanField(default=False) #memeber of staff
-    #date_joined         = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
-    #last_login          = models.DateTimeField(verbose_name="last_login", auto_now=True)
-    #is_active           = models.BooleanField(default=True)
-    #is_superuser        = models.BooleanField(default=False)
-
-    #custom fields
+    email                   = models.EmailField(verbose_name='email', max_length=60, unique=True)
+    username                = models.CharField(max_length=30, unique=True, primary_key=True, default='null')
     password                = models.CharField(max_length=50, blank=False, default='null')
     password2               = models.CharField(max_length=50, blank=False, default='null')
     dwelling_code           = models.CharField(max_length=50, blank=False, default='null')

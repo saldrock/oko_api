@@ -1,32 +1,25 @@
 from rest_framework import serializers
 from .models import Dwelling, Room, Device, RoomData, Suggestion 
-from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'password')
-        extra_kwargs = {'password': {'write_only': True, 'required': True}}
-
+#This is what converts the data to and from JSON format
 
 class SuggestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Suggestion
-        fields = ('id','related_room', 'suggestion',)
+        fields = ('suggestion_id','room_id', 'suggestion',)
 
 
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoomData
-        fields = ('related_room', 'co2', 'humidity', 'temperature')
+        fields = ('data_id', 'room_id', 'co2', 'humidity', 'temperature')
 
 
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        # fields = ('device_code','room', 'device_name', 'mac_address', 'state', 'energy_used')
-        fields = '__all__'
+        fields = ('device_code','room_id', 'device_name', 'mac_address', 'state', 'energy_used')
 
 
 class RoomSerializer(serializers.ModelSerializer):
@@ -36,7 +29,7 @@ class RoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Room
-        fields = ('room_code','related_dwelling', 'room_name', 'data', 'devices','suggestion')
+        fields = ('room_id','dwelling_id', 'room_name', 'data', 'devices','suggestion')
 
 
 class DwellingSerializer(serializers.ModelSerializer):
