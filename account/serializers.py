@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from account.models import Account, User_Data
+from account.models import Account, User_Data, Account_unsecure
 
 
 # class LoginSerializer(serializers.ModelSerializer):
@@ -13,10 +13,10 @@ from account.models import Account, User_Data
 # 	def validate(self, data):
 # 		password = data.get('password')
 # 		email = data.get('email')
-class User_Data_Serializer():
+class User_Data_Serializer(serializers.ModelSerializer):
     class Meta:
         model = User_Data
-        fields = fields = ('id', 'energyused_ytd', 'energyused_mtd','energyused_day')
+        fields = ('id', 'energyused_ytd', 'energyused_mtd','energyused_day')
 
 class RegistrationSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
@@ -50,3 +50,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
         account.set_password(password)
         account.save() #s
         return account
+
+
+class Account_Unsecure_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account_unsecure
+        fields = '__all__'

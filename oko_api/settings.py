@@ -3,13 +3,13 @@ from decouple import config
 from dj_database_url import parse as dburl
 
 #verification email settings
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'okodevlopment@gmail.com'
-EMAIL_HOST_PASSWORD = 'iLovesoftware110%'
+# EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'okodevlopment@gmail.com'
+# EMAIL_HOST_PASSWORD = 'iLovesoftware110%'
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -44,13 +44,24 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.CacheMiddleware',
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
 ]
 
 REST_FRAMEWORK = { #rest framework auth settings
@@ -79,6 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'oko_api.wsgi.application'
 
 AUTH_USER_MODEL = 'account.Account'
+# AUTH_PROFILE_MODULE = 'account.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -89,7 +101,6 @@ DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -109,10 +120,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND =
-
 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 

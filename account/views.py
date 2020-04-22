@@ -5,13 +5,21 @@ from rest_framework.decorators import api_view
 from .serializers import RegistrationSerializer, User_Data_Serializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import User_Data
+from .models import User_Data, Account, Account_unsecure
 from django.core.mail import send_mail
+from .serializers import Account_Unsecure_Serializer
 
 class User_DataViewSet(viewsets.ModelViewSet):
 	queryset = User_Data.objects.all()
 	serializer_class = User_Data_Serializer
 	permission_classes = (AllowAny,)
+
+
+class account_view(viewsets.ModelViewSet):
+	queryset = Account_unsecure.objects.all()
+	serializer_class = Account_Unsecure_Serializer
+	permission_classes = (AllowAny, )
+
 
 
 @api_view(['POST', ])
@@ -22,14 +30,14 @@ def registration_view(request):
 		data = {}
 		if serializer.is_valid():
 			account = serializer.save()
-			data['response'] 		= 'successfully registered new user.'
-			data['email'] 			= account.email
-			data['username'] 		= account.username
-			token 					= Token.objects.get(user=account).key
-			data['token'] 			= token
-			data['first_name'] 		= account.first_name
-			data['surname'] 		= account.surname
-			data['dwelling_code']	= account.dwelling_code
+			data['response'] 				= 'successfully registered new user.'
+			data['email'] 					= account.email
+			data['username'] 				= account.username
+			token 							= Token.objects.get(user=account).key
+			data['token'] 					= token
+			data['first_name'] 				= account.first_name
+			data['surname'] 				= account.surname
+			data['dwelling_code']			= account.dwelling_code
 			data['incentivisation_choice']	= account.incentivisation_choice
 			data['goal'] 					= account.goal
 			data['phone_number'] 			= account.phone_number
@@ -40,10 +48,10 @@ def registration_view(request):
 			data = serializer.errors
 		return Response(data)
 
-send_mail(
-	'Oko Verification Email',
-	'Your verification code is XYZ',
-	'okodevelopment@gmail.com',
-	['nevecurnyn1999@gmail.com'],
-	fail_silently=False,
-).send()
+# send_mail(
+	# 'Oko Verification Email',
+	# 'Your verification code is XYZ',
+	# 'okodevelopment@gmail.com',
+	# ['nevecurnyn1999@gmail.com'],
+	# fail_silently=False,
+#)# .send()
